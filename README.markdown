@@ -23,5 +23,4 @@ This plugin is compatible with the 1.3.x version of CakePHP
 
 ## Copyright e Licença
 
-> Copyright 2011, Pedro Elsner (http://pedroelsner.com/)
-> Creative Commons 3.0 (http://creativecommons.org/licenses/by/3.0/)
+Copyright 2011, Pedro Elsner (http://pedroelsner.com/)Creative Commons 3.0 (http://creativecommons.org/licenses/by/3.0/)
