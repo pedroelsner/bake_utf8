@@ -21,6 +21,6 @@ Chame as rotinas Bake da mesma forma, porém adicionando o sufixo "_utf8".
 
 Este plugin é compatível com a versão 1.3.x do CakePHP
 
-## Copyright e Licença
+## Autor
 
-Copyright 2011, Pedro Elsner (http://pedroelsner.com/)Creative Commons 3.0 (http://creativecommons.org/licenses/by/3.0/br/)
+Pedro Elsner (http://pedroelsner.com/)

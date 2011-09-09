@@ -21,6 +21,6 @@ Call routines bake the same way but adding the suffix "_utf8."
 
 This plugin is compatible with the 1.3.x version of CakePHP
 
-## Copyright e Licença
+## Author
 
-Copyright 2011, Pedro Elsner (http://pedroelsner.com/)Creative Commons 3.0 (http://creativecommons.org/licenses/by/3.0/)
+Pedro Elsner (http://pedroelsner.com/)
