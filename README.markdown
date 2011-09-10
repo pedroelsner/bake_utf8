@@ -11,15 +11,15 @@ Download the plugin and place its contents inside `app/plugins/bake_utf8` or oth
 Call routines bake the same way but adding the suffix "_utf8."
 
 <pre>
-	cake bake_utf8 all
-	cake bake_utf8 model_utf8 MODEL_NAME
-	cake bake_utf8 controller_utf8 CONTROLLER_NAME
-	cake bake_utf8 view_utf8 VIEW_NAME
+cake bake_utf8 all
+cake bake_utf8 model_utf8 MODEL_NAME
+cake bake_utf8 controller_utf8 CONTROLLER_NAME
+cake bake_utf8 view_utf8 VIEW_NAME
 </pre>
 
 ## Compatibility
 
-This plugin is compatible with the 1.3.x version of CakePHP
+Compatible with CakePHP v 1.3
 
 ## Author
 

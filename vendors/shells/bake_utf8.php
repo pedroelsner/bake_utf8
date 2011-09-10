@@ -2,14 +2,10 @@
 /**
  * Arquivo que responde ao comando 'bake_utf8'
  *
- * Compatível com PHP 4 e 5
- *
- * Licenciado pela Creative Commons 3.0
+ * CompatÃ­vel com PHP 4 e 5
  *
  * @filesource
- * @copyright   Copyright 2011, Pedro Elsner (http://pedroelsner.com/)
  * @author      Pedro Elsner <pedro.elsner@gmail.com>
- * @license     Creative Commons 3.0 (http://creativecommons.org/licenses/by/3.0/br/)
  * @since       v 1.0
  */
 
@@ -24,225 +20,225 @@
  */ 
 class BakeUtf8Shell extends Shell
 {
-	
-	/**
-	 * Carrega todas as taks
-	 *
-	 * @var array
-	 * @access public
-	 */
-	var $tasks = array(
-		'Project',
-		'DbConfig',
-		'ModelUtf8',
-		'ControllerUtf8',
-		'ViewUtf8',
-		'Plugin',
-		'PluginUtf8',
-		'FixtureUtf8',
-		'TestUtf8'
-	);
+    
+/**
+ * Carrega todas as taks
+ *
+ * @var array
+ * @access public
+ */
+    var $tasks = array(
+        'Project',
+        'DbConfig',
+        'ModelUtf8',
+        'ControllerUtf8',
+        'ViewUtf8',
+        'Plugin',
+        'PluginUtf8',
+        'FixtureUtf8',
+        'TestUtf8'
+    );
 
-	
-	/**
-	 * Main
-	 *
-	 * @return boolean
-	 * @access public
-	 */
-	function main()
-	{
-		if (!is_dir($this->DbConfig->path))
-		{
-			if ($this->Project->execute())
-			{
-				$this->DbConfig->path = $this->params['working'] . DS . 'config' . DS;
-			}
-			else
-			{
-				return false;
-			}
-		}
+    
+/**
+ * Main
+ *
+ * @return boolean
+ * @access public
+ */
+    function main()
+    {
+        if (!is_dir($this->DbConfig->path))
+        {
+            if ($this->Project->execute())
+            {
+                $this->DbConfig->path = $this->params['working'] . DS . 'config' . DS;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-		if (!config('database'))
-		{
-			$this->out(__("Your database configuration was not found. Take a moment to create one.", true));
-			$this->args = null;
-			return $this->DbConfig->execute();
-		}
-		$this->out('Interactive Bake Shell');
-		$this->hr();
-		$this->out('[D]atabase Configuration');
-		$this->out('[M]odel');
-		$this->out('[V]iew');
-		$this->out('[C]ontroller');
-		$this->out('[P]roject');
-		$this->out('[F]ixture');
-		$this->out('[T]est case');
-		$this->out('[Q]uit');
+        if (!config('database'))
+        {
+            $this->out(__("Your database configuration was not found. Take a moment to create one.", true));
+            $this->args = null;
+            return $this->DbConfig->execute();
+        }
+        $this->out('Interactive Bake Shell');
+        $this->hr();
+        $this->out('[D]atabase Configuration');
+        $this->out('[M]odel');
+        $this->out('[V]iew');
+        $this->out('[C]ontroller');
+        $this->out('[P]roject');
+        $this->out('[F]ixture');
+        $this->out('[T]est case');
+        $this->out('[Q]uit');
 
-		$classToBake = strtoupper($this->in(__('What would you like to Bake?', true), array('D', 'M', 'V', 'C', 'P', 'F', 'T', 'Q')));
-		switch ($classToBake)
-		{
-			case 'D':
-				$this->DbConfig->execute();
-				break;
-			case 'M':
-				$this->ModelUtf8->execute();
-				break;
-			case 'V':
-				$this->ViewUtf8->execute();
-				break;
-			case 'C':
-				$this->ControllerUtf8->execute();
-				break;
-			case 'P':
-				$this->Project->execute();
-				break;
-			case 'F':
-				$this->FixtureUtf8->execute();
-				break;
-			case 'T':
-				$this->TestUtf8->execute();
-				break;
-			case 'Q':
-				exit(0);
-				break;
-			default:
-				$this->out(__('You have made an invalid selection. Please choose a type of class to Bake by entering D, M, V, F, T, or C.', true));
-		}
-		$this->hr();
-		$this->main();
-	}
+        $classToBake = strtoupper($this->in(__('What would you like to Bake?', true), array('D', 'M', 'V', 'C', 'P', 'F', 'T', 'Q')));
+        switch ($classToBake)
+        {
+            case 'D':
+                $this->DbConfig->execute();
+                break;
+            case 'M':
+                $this->ModelUtf8->execute();
+                break;
+            case 'V':
+                $this->ViewUtf8->execute();
+                break;
+            case 'C':
+                $this->ControllerUtf8->execute();
+                break;
+            case 'P':
+                $this->Project->execute();
+                break;
+            case 'F':
+                $this->FixtureUtf8->execute();
+                break;
+            case 'T':
+                $this->TestUtf8->execute();
+                break;
+            case 'Q':
+                exit(0);
+                break;
+            default:
+                $this->out(__('You have made an invalid selection. Please choose a type of class to Bake by entering D, M, V, F, T, or C.', true));
+        }
+        $this->hr();
+        $this->main();
+    }
 
-	
-	/**
-	 * All
-	 *
-	 * Responde ao comando 'bake_utf8 all'
-	 *
-	 * @access public
-	 */
-	function all()
-	{
-		$this->hr();
-		$this->out('Bake All');
-		$this->hr();
+    
+/**
+ * All
+ *
+ * Responde ao comando 'bake_utf8 all'
+ *
+ * @access public
+ */
+    function all()
+    {
+        $this->hr();
+        $this->out('Bake All');
+        $this->hr();
 
-		if (!isset($this->params['connection']) && empty($this->connection))
-		{
-			$this->connection = $this->DbConfig->getConfig();
-		}
-		
-		
-		if (empty($this->args))
-		{
-			$this->ModelUtf8->interactive = true;
-			$name = $this->ModelUtf8->getName($this->connection);
-		}
-		
-		
-		foreach (array('ModelUtf8', 'ControllerUtf8', 'ViewUtf8') as $task)
-		{
-			$this->{$task}->connection = $this->connection;
-			$this->{$task}->interactive = false;
-		}
+        if (!isset($this->params['connection']) && empty($this->connection))
+        {
+            $this->connection = $this->DbConfig->getConfig();
+        }
+        
+        
+        if (empty($this->args))
+        {
+            $this->ModelUtf8->interactive = true;
+            $name = $this->ModelUtf8->getName($this->connection);
+        }
+        
+        
+        foreach (array('ModelUtf8', 'ControllerUtf8', 'ViewUtf8') as $task)
+        {
+            $this->{$task}->connection = $this->connection;
+            $this->{$task}->interactive = false;
+        }
 
-		if (!empty($this->args[0]))
-		{
-			$name = $this->args[0];
-		}
+        if (!empty($this->args[0]))
+        {
+            $name = $this->args[0];
+        }
 
-		$modelExists = false;
-		$model = $this->_modelName($name);
-		if (App::import('Model', $model))
-		{
-			$object = new $model();
-			$modelExists = true;
-		}
-		else
-		{
-			App::import('Model', 'Model', false);
-			$object = new Model(array('name' => $name, 'ds' => $this->connection));
-		}
-		
-		
-		$modelBaked = $this->ModelUtf8->bake($object, false);
-		
-		
-		if ($modelBaked && $modelExists === false)
-		{
-			$this->out(sprintf(__('%s Model was baked.', true), $model));
-			if ($this->_checkUnitTest())
-			{
-				$this->ModelUtf8->bakeFixture($model);
-				$this->ModelUtf8->bakeTest($model);
-			}
-			
-			$modelExists = true;
-		}
+        $modelExists = false;
+        $model = $this->_modelName($name);
+        if (App::import('Model', $model))
+        {
+            $object = new $model();
+            $modelExists = true;
+        }
+        else
+        {
+            App::import('Model', 'Model', false);
+            $object = new Model(array('name' => $name, 'ds' => $this->connection));
+        }
+        
+        
+        $modelBaked = $this->ModelUtf8->bake($object, false);
+        
+        
+        if ($modelBaked && $modelExists === false)
+        {
+            $this->out(sprintf(__('%s Model was baked.', true), $model));
+            if ($this->_checkUnitTest())
+            {
+                $this->ModelUtf8->bakeFixture($model);
+                $this->ModelUtf8->bakeTest($model);
+            }
+            
+            $modelExists = true;
+        }
 
-		if ($modelExists === true)
-		{
-			$controller = $this->_controllerName($name);
-			if ($this->ControllerUtf8->bake($controller, $this->ControllerUtf8->bakeActions($controller))) {
-				$this->out(sprintf(__('%s Controller was baked.', true), $name));
-				if ($this->_checkUnitTest())
-				{
-					$this->ControllerUtf8->bakeTest($controller);
-				}
-				
-			}
-			if (App::import('Controller', $controller))
-			{
-				$this->ViewUtf8->args = array($controller);
-				$this->ViewUtf8->execute();
-				$this->out(sprintf(__('%s Views were baked.', true), $name));
-				
-			}
-			$this->out(__('Bake All complete', true));
-			array_shift($this->args);
-		}
-		else
-		{
-			$this->err(__('Bake All could not continue without a valid model', true));
-		}
-		$this->_stop();
-	}
+        if ($modelExists === true)
+        {
+            $controller = $this->_controllerName($name);
+            if ($this->ControllerUtf8->bake($controller, $this->ControllerUtf8->bakeActions($controller))) {
+                $this->out(sprintf(__('%s Controller was baked.', true), $name));
+                if ($this->_checkUnitTest())
+                {
+                    $this->ControllerUtf8->bakeTest($controller);
+                }
+                
+            }
+            if (App::import('Controller', $controller))
+            {
+                $this->ViewUtf8->args = array($controller);
+                $this->ViewUtf8->execute();
+                $this->out(sprintf(__('%s Views were baked.', true), $name));
+                
+            }
+            $this->out(__('Bake All complete', true));
+            array_shift($this->args);
+        }
+        else
+        {
+            $this->err(__('Bake All could not continue without a valid model', true));
+        }
+        $this->_stop();
+    }
 
-	
-	/**
-	 * Help
-	 *
-	 * Responde ao comando 'bake_utf8 help'
-	 *
-	 * @access public
-	 */
-	function help()
-	{
-		$this->out('CakePHP Bake:');
-		$this->hr();
-		$this->out('The Bake script generates controllers, views and models for your application.');
-		$this->out('If run with no command line arguments, Bake guides the user through the class');
-		$this->out('creation process. You can customize the generation process by telling Bake');
-		$this->out('where different parts of your application are using command line arguments.');
-		$this->hr();
-		$this->out("Usage: cake bake <command> <arg1> <arg2>...");
-		$this->hr();
-		$this->out('Params:');
-		$this->out("\t-app <path> Absolute/Relative path to your app folder.\n");
-		$this->out('Commands:');
-		$this->out("\n\tbake help\n\t\tshows this help message.");
-		$this->out("\n\tbake all <name>\n\t\tbakes complete MVC. optional <name> of a Model");
-		$this->out("\n\tbake project <path>\n\t\tbakes a new app folder in the path supplied\n\t\tor in current directory if no path is specified");
-		$this->out("\n\tbake plugin <name>\n\t\tbakes a new plugin folder in the path supplied\n\t\tor in current directory if no path is specified.");
-		$this->out("\n\tbake db_config\n\t\tbakes a database.php file in config directory.");
-		$this->out("\n\tbake model\n\t\tbakes a model. run 'bake model help' for more info");
-		$this->out("\n\tbake view\n\t\tbakes views. run 'bake view help' for more info");
-		$this->out("\n\tbake controller\n\t\tbakes a controller. run 'bake controller help' for more info");
-		$this->out("\n\tbake fixture\n\t\tbakes fixtures. run 'bake fixture help' for more info.");
-		$this->out("\n\tbake test\n\t\tbakes unit tests. run 'bake test help' for more info.");
-		$this->out();
+    
+/**
+ * Help
+ *
+ * Responde ao comando 'bake_utf8 help'
+ *
+ * @access public
+ */
+    function help()
+    {
+        $this->out('CakePHP Bake:');
+        $this->hr();
+        $this->out('The Bake script generates controllers, views and models for your application.');
+        $this->out('If run with no command line arguments, Bake guides the user through the class');
+        $this->out('creation process. You can customize the generation process by telling Bake');
+        $this->out('where different parts of your application are using command line arguments.');
+        $this->hr();
+        $this->out("Usage: cake bake <command> <arg1> <arg2>...");
+        $this->hr();
+        $this->out('Params:');
+        $this->out("\t-app <path> Absolute/Relative path to your app folder.\n");
+        $this->out('Commands:');
+        $this->out("\n\tbake help\n\t\tshows this help message.");
+        $this->out("\n\tbake all <name>\n\t\tbakes complete MVC. optional <name> of a Model");
+        $this->out("\n\tbake project <path>\n\t\tbakes a new app folder in the path supplied\n\t\tor in current directory if no path is specified");
+        $this->out("\n\tbake plugin <name>\n\t\tbakes a new plugin folder in the path supplied\n\t\tor in current directory if no path is specified.");
+        $this->out("\n\tbake db_config\n\t\tbakes a database.php file in config directory.");
+        $this->out("\n\tbake model\n\t\tbakes a model. run 'bake model help' for more info");
+        $this->out("\n\tbake view\n\t\tbakes views. run 'bake view help' for more info");
+        $this->out("\n\tbake controller\n\t\tbakes a controller. run 'bake controller help' for more info");
+        $this->out("\n\tbake fixture\n\t\tbakes fixtures. run 'bake fixture help' for more info.");
+        $this->out("\n\tbake test\n\t\tbakes unit tests. run 'bake test help' for more info.");
+        $this->out();
 
-	}
+    }
 }
