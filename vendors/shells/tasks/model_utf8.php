@@ -678,6 +678,52 @@ class ModelUtf8Task extends BakeUtf8Task
         }
         return $associations;
     }
+
+    
+/**
+ * Find Has And Belongs To Many
+ *
+ * @param object $model
+ * @param array $associations
+ * @return array
+ */
+    function findHasAndBelongsToMany(&$model, $associations)
+    {
+        $foreignKey = $this->_modelKey($model->name);
+        foreach ($this->_tables as $otherTable)
+        {
+            $tempOtherModel = $this->_getModelObject($this->_modelName($otherTable), $otherTable);
+            $modelFieldsTemp = $tempOtherModel->schema(true);
+
+            $offset = strpos($otherTable, $model->table . '_');
+            $otherOffset = strpos($otherTable, '_' . $model->table);
+
+            if ($offset !== false)
+            {
+                $offset = strlen($model->table . '_');
+                $habtmName = $this->_modelName(substr($otherTable, $offset));
+                $associations['hasAndBelongsToMany'][] = array(
+                    'alias' => $habtmName,
+                    'className' => $habtmName,
+                    'foreignKey' => $foreignKey,
+                    'associationForeignKey' => $this->_modelKey($habtmName),
+                    'joinTable' => $otherTable
+                );
+            }
+            elseif ($otherOffset !== false)
+            {
+                $habtmName = $this->_modelName(substr($otherTable, 0, $otherOffset));
+                $associations['hasAndBelongsToMany'][] = array(
+                    'alias' => $habtmName,
+                    'className' => $habtmName,
+                    'foreignKey' => $foreignKey,
+                    'associationForeignKey' => $this->_modelKey($habtmName),
+                    'joinTable' => $otherTable
+                );
+            }
+        }
+        return $associations;
+    }
     
     
 /**
