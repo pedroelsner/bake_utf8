@@ -5,7 +5,7 @@
  * Compatível com PHP 4 e 5
  *
  * @filesource
- * @author        Pedro Elsner <pedro.elsner@gmail.com>
+ * @author      Pedro Elsner <pedro.elsner@gmail.com>
  * @since       v 1.0
  */
 

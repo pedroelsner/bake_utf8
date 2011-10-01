@@ -5,7 +5,7 @@
  * Compatível com PHP 4 e 5
  *
  * @filesource
- * @author        Pedro Elsner <pedro.elsner@gmail.com>
+ * @author      Pedro Elsner <pedro.elsner@gmail.com>
  * @since       v 1.0
  */
 
@@ -18,8 +18,8 @@ include_once dirname(__FILE__) . DS . 'bake_utf8.php';
  * View Utf8 Task
  *
  * @use         BakeUtf8Task
- * @package        bake_utf8
- * @subpackage     bake_utf8.view_utf8_task
+ * @package     bake_utf8
+ * @subpackage  bake_utf8.view_utf8_task
  * @link        http://www.github.com/pedroelsner/bake_utf8
  */
 class ViewUtf8Task extends BakeUtf8Task
