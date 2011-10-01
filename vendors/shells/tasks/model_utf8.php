@@ -1089,7 +1089,7 @@ class ModelUtf8Task extends BakeUtf8Task
  */
     function help() {
         $this->hr();
-        $this->out("Usage: cake bake model <arg1>");
+        $this->out("Usage: cake bake_utf8 model_utf8 <arg1>");
         $this->hr();
         $this->out('Arguments:');
         $this->out();
@@ -1099,13 +1099,13 @@ class ModelUtf8Task extends BakeUtf8Task
         $this->out();
         $this->out('Commands:');
         $this->out();
-        $this->out("model");
+        $this->out("model_utf8");
         $this->out("\tbakes model in interactive mode.");
         $this->out();
-        $this->out("model <name>");
+        $this->out("model_utf8 <name>");
         $this->out("\tbakes model file with no associations or validation");
         $this->out();
-        $this->out("model all");
+        $this->out("model_utf8 all");
         $this->out("\tbakes all model files with associations and validation");
         $this->out();
         $this->_stop();

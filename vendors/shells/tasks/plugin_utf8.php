@@ -260,20 +260,20 @@ class PluginUtf8Task extends Shell
  */
     function help() {
         $this->hr();
-        $this->out("Usage: cake bake plugin <arg1> <arg2>...");
+        $this->out("Usage: cake bake_utf8 plugin_utf8 <arg1> <arg2>...");
         $this->hr();
         $this->out('Commands:');
         $this->out();
-        $this->out("plugin <name>");
+        $this->out("plugin_utf8 <name>");
         $this->out("\tbakes plugin directory structure");
         $this->out();
-        $this->out("plugin <name> model");
+        $this->out("plugin_utf8 <name> model_utf8");
         $this->out("\tbakes model. Run 'cake bake model help' for more info.");
         $this->out();
-        $this->out("plugin <name> controller");
+        $this->out("plugin_utf8 <name> controller_utf8");
         $this->out("\tbakes controller. Run 'cake bake controller help' for more info.");
         $this->out();
-        $this->out("plugin <name> view");
+        $this->out("plugin_utf8 <name> view_utf8");
         $this->out("\tbakes view. Run 'cake bake view help' for more info.");
         $this->out();
         $this->_stop();

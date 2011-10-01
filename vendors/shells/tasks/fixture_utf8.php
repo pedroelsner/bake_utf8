@@ -461,7 +461,7 @@ class FixtureUtf8Task extends BakeUtf8Task
  */
     function help() {
         $this->hr();
-        $this->out("Usage: cake bake fixture <arg1> <params>");
+        $this->out("Usage: cake bake_utf8 fixture_utf8 <arg1> <params>");
         $this->hr();
         $this->out('Arguments:');
         $this->out();
@@ -470,8 +470,8 @@ class FixtureUtf8Task extends BakeUtf8Task
         $this->out("\tas a shortcut for plugin baking.");
         $this->out();
         $this->out('Commands:');
-        $this->out("\nfixture <name>\n\tbakes fixture with specified name.");
-        $this->out("\nfixture all\n\tbakes all fixtures.");
+        $this->out("\nfixture_utf8 <name>\n\tbakes fixture with specified name.");
+        $this->out("\nfixture_utf8 all\n\tbakes all fixtures.");
         $this->out();
         $this->out('Parameters:');
         $this->out("\t-count       When using generated data, the number of records to include in the fixture(s).");

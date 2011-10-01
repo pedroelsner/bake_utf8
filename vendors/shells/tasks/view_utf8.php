@@ -514,7 +514,7 @@ class ViewUtf8Task extends BakeUtf8Task
  */
     function help() {
         $this->hr();
-        $this->out("Usage: cake bake view <arg1> <arg2>...");
+        $this->out("Usage: cake bake_utf8 view_utf8 <arg1> <arg2>...");
         $this->hr();
         $this->out('Arguments:');
         $this->out();
@@ -527,7 +527,7 @@ class ViewUtf8Task extends BakeUtf8Task
         $this->out();
         $this->out('Commands:');
         $this->out();
-        $this->out("view <controller>");
+        $this->out("view_utf8 <controller>");
         $this->out("\tWill read the given controller for methods");
         $this->out("\tand bake corresponding views.");
         $this->out("\tUsing the -admin flag will only bake views for actions");
@@ -535,14 +535,14 @@ class ViewUtf8Task extends BakeUtf8Task
         $this->out("\tIf var scaffold is found it will bake the CRUD actions");
         $this->out("\t(index,view,add,edit)");
         $this->out();
-        $this->out("view <controller> <action>");
+        $this->out("view_utf8 <controller> <action>");
         $this->out("\tWill bake a template. core templates: (index, add, edit, view)");
         $this->out();
-        $this->out("view <controller> <template> <alias>");
+        $this->out("view_utf8 <controller> <template> <alias>");
         $this->out("\tWill use the template specified");
         $this->out("\tbut name the file based on the alias");
         $this->out();
-        $this->out("view all");
+        $this->out("view_utf8 all");
         $this->out("\tBake all CRUD action views for all controllers.");
         $this->out("\tRequires that models and controllers exist.");
         $this->_stop();

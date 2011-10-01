@@ -508,13 +508,13 @@ class TestUtf8Task extends BakeUtf8Task
  */
     function help() {
         $this->hr();
-        $this->out("Usage: cake bake test <type> <class>");
+        $this->out("Usage: cake bake_utf8 test_utf8 <type> <class>");
         $this->hr();
         $this->out('Commands:');
         $this->out("");
-        $this->out("test model post\n\tbakes a test case for the post model.");
+        $this->out("test_utf8 model post\n\tbakes a test case for the post model.");
         $this->out("");
-        $this->out("test controller comments\n\tbakes a test case for the comments controller.");
+        $this->out("test_utf8 controller comments\n\tbakes a test case for the comments controller.");
         $this->out("");
         $this->out('Arguments:');
         $this->out("\t<type>   Can be any of the following 'controller', 'model', 'helper',\n\t'component', 'behavior'.");
