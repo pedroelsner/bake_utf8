@@ -96,7 +96,7 @@ class BakeUtf8Task extends Shell
         fclose($fh);
         
         $fh = fopen($path, 'w');
-        fwrite($fh, $newcontent);
+        fwrite($fh, utf8_encode($newcontent));
         fclose($fh);
         
         return true;
@@ -123,15 +123,9 @@ class BakeUtf8Task extends Shell
         }
         fclose($fh);
         
-        //! Verifica e convert conteudo
-        //if(!mb_check_encoding($content, 'UTF-8')) {
-            $content = utf8_encode($content); 
-            //Ou se preferir: $content = mb_convert_encoding($content, 'UTF-8'); 
-        //}
-        
-        //! Grava conte�do no arquivo
+        //! Grava conteúdo no arquivo
         $fh = fopen($path, 'w');
-        fwrite($fh, $content);
+        fwrite($fh, utf8_encode('\xEF\xBB\xBF'.$content));
         fclose($fh);
         
     }

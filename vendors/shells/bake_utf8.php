@@ -11,7 +11,7 @@
 
 
 /**
- * Bake Utf8 Shell
+ * Bake  Shell
  *
  * @use         Shell
  * @package     bake_utf8
@@ -30,13 +30,13 @@ class BakeUtf8Shell extends Shell
     var $tasks = array(
         'Project',
         'DbConfig',
-        'ModelUtf8',
-        'ControllerUtf8',
-        'ViewUtf8',
+        'Model',
+        'Controller',
+        'View',
         'Plugin',
-        'PluginUtf8',
-        'FixtureUtf8',
-        'TestUtf8'
+        'Plugin',
+        'Fixture',
+        'Test'
     );
 
     
@@ -66,7 +66,7 @@ class BakeUtf8Shell extends Shell
             $this->args = null;
             return $this->DbConfig->execute();
         }
-        $this->out('Interactive Bake Shell');
+        $this->out('Interactive Bake Utf8 Shell');
         $this->hr();
         $this->out('[D]atabase Configuration');
         $this->out('[M]odel');
@@ -77,29 +77,29 @@ class BakeUtf8Shell extends Shell
         $this->out('[T]est case');
         $this->out('[Q]uit');
 
-        $classToBake = strtoupper($this->in(__('What would you like to Bake?', true), array('D', 'M', 'V', 'C', 'P', 'F', 'T', 'Q')));
+        $classToBake = strtoupper($this->in(__('What would you like to Bake in Utf8?', true), array('D', 'M', 'V', 'C', 'P', 'F', 'T', 'Q')));
         switch ($classToBake)
         {
             case 'D':
                 $this->DbConfig->execute();
                 break;
             case 'M':
-                $this->ModelUtf8->execute();
+                $this->Model->execute();
                 break;
             case 'V':
-                $this->ViewUtf8->execute();
+                $this->View->execute();
                 break;
             case 'C':
-                $this->ControllerUtf8->execute();
+                $this->Controller->execute();
                 break;
             case 'P':
                 $this->Project->execute();
                 break;
             case 'F':
-                $this->FixtureUtf8->execute();
+                $this->Fixture->execute();
                 break;
             case 'T':
-                $this->TestUtf8->execute();
+                $this->Test->execute();
                 break;
             case 'Q':
                 exit(0);
@@ -133,12 +133,12 @@ class BakeUtf8Shell extends Shell
         
         if (empty($this->args))
         {
-            $this->ModelUtf8->interactive = true;
-            $name = $this->ModelUtf8->getName($this->connection);
+            $this->Model->interactive = true;
+            $name = $this->Model->getName($this->connection);
         }
         
         
-        foreach (array('ModelUtf8', 'ControllerUtf8', 'ViewUtf8') as $task)
+        foreach (array('Model', 'Controller', 'View') as $task)
         {
             $this->{$task}->connection = $this->connection;
             $this->{$task}->interactive = false;
@@ -163,7 +163,7 @@ class BakeUtf8Shell extends Shell
         }
         
         
-        $modelBaked = $this->ModelUtf8->bake($object, false);
+        $modelBaked = $this->Model->bake($object, false);
         
         
         if ($modelBaked && $modelExists === false)
@@ -171,8 +171,8 @@ class BakeUtf8Shell extends Shell
             $this->out(sprintf(__('%s Model was baked.', true), $model));
             if ($this->_checkUnitTest())
             {
-                $this->ModelUtf8->bakeFixture($model);
-                $this->ModelUtf8->bakeTest($model);
+                $this->Model->bakeFixture($model);
+                $this->Model->bakeTest($model);
             }
             
             $modelExists = true;
@@ -181,18 +181,18 @@ class BakeUtf8Shell extends Shell
         if ($modelExists === true)
         {
             $controller = $this->_controllerName($name);
-            if ($this->ControllerUtf8->bake($controller, $this->ControllerUtf8->bakeActions($controller))) {
+            if ($this->Controller->bake($controller, $this->Controller->bakeActions($controller))) {
                 $this->out(sprintf(__('%s Controller was baked.', true), $name));
                 if ($this->_checkUnitTest())
                 {
-                    $this->ControllerUtf8->bakeTest($controller);
+                    $this->Controller->bakeTest($controller);
                 }
                 
             }
             if (App::import('Controller', $controller))
             {
-                $this->ViewUtf8->args = array($controller);
-                $this->ViewUtf8->execute();
+                $this->View->args = array($controller);
+                $this->View->execute();
                 $this->out(sprintf(__('%s Views were baked.', true), $name));
                 
             }
@@ -235,9 +235,9 @@ class BakeUtf8Shell extends Shell
         $this->out("\n\tbake_utf8 project <path>\n\t\tbakes a new app folder in the path supplied\n\t\tor in current directory if no path is specified");
         $this->out("\n\tbake_utf8 plugin <name>\n\t\tbakes a new plugin folder in the path supplied\n\t\tor in current directory if no path is specified.");
         $this->out("\n\tbake_utf8 db_config\n\t\tbakes a database.php file in config directory.");
-        $this->out("\n\tbake_utf8 model_utf8\n\t\tbakes a model. run 'bake model help' for more info");
-        $this->out("\n\tbake_utf8 view_utf8\n\t\tbakes views. run 'bake view help' for more info");
-        $this->out("\n\tbake_utf8 controller_utf8\n\t\tbakes a controller. run 'bake controller help' for more info");
+        $this->out("\n\tbake_utf8 model\n\t\tbakes a model. run 'bake model help' for more info");
+        $this->out("\n\tbake_utf8 view\n\t\tbakes views. run 'bake view help' for more info");
+        $this->out("\n\tbake_utf8 controller\n\t\tbakes a controller. run 'bake controller help' for more info");
         $this->out("\n\tbake_utf8 fixture\n\t\tbakes fixtures. run 'bake fixture help' for more info.");
         $this->out("\n\tbake_utf8 test\n\t\tbakes unit tests. run 'bake test help' for more info.");
         $this->out();
